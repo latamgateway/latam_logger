@@ -9,7 +9,7 @@ module LatamLogger
       attr_reader :logger
 
       def initialize
-        @logger = Logger.new(STDOUT)
+        @logger = Logger.new(ENV['LATAM_LOGGER_PATH_FILE'] || STDOUT)
         @logger.formatter = method(:format_log)
       end
 
