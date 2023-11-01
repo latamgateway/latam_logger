@@ -10,8 +10,8 @@ module LatamLogger
       attr_reader :logger
       attr_reader :order_id
 
-      def initialize (order_id)
-        @order_id = order_id
+      def initialize #(order_id)
+        #@order_id = order_id
         @logger = Logger.new(ENV['LATAM_LOGGER_PATH_FILE'] || STDOUT)
         @logger.formatter = method(:format_log)
       end
