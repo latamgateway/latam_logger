@@ -7,15 +7,17 @@ module LatamLogger
   module Log
     class Logging
       attr_reader :logger
+      attr_reader :order_id
 
-      def initialize
+      def initialize (order_id)
+        @order_id = order_id
         @logger = Logger.new(ENV['LATAM_LOGGER_PATH_FILE'] || STDOUT)
         @logger.formatter = method(:format_log)
       end
 
       %w[debug info warn error].each do |level|
         define_method(level) do |log|
-          @logger.send(level, log)
+          Datadog::Tracing.trace(@order_id) {@logger.send(level, log)}
         end
       end
 
