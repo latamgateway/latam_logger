@@ -2,13 +2,13 @@
 
 require "logger"
 require "json"
-require "ddtrace"
+#require "ddtrace"
 
 module LatamLogger
   module Log
     class Logging
       attr_reader :logger
-      attr_reader :order_id
+      #attr_reader :order_id
 
       def initialize #(order_id)
         #@order_id = order_id
