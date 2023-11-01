@@ -18,7 +18,7 @@ module LatamLogger
 
       %w[debug info warn error].each do |level|
         define_method(level) do |log|
-          Datadog::Tracing.trace(@order_id) {@logger.send(level, log)}
+          Datadog::Tracing.trace('@order_id') {@logger.send(level, log)}
         end
       end
 
