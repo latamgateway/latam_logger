@@ -2,6 +2,7 @@
 
 require "logger"
 require "json"
+require "ddtrace"
 
 module LatamLogger
   module Log
